@@ -17,9 +17,6 @@ import json
 from csv import DictReader
 
 
-
-
-
 def book_parser():
     with open("./src/books.csv", "r") as csv_file:
         books = DictReader(csv_file)
@@ -31,10 +28,8 @@ def book_parser():
             books_fields["genre"] = book["Genre"]
             yield books_fields
 
+
 book_fields = book_parser()
-
-
-
 
 with open("./src/users.json", "r") as json_file:
     users = (i for i in (json.loads(json_file.read())))
