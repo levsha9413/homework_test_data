@@ -11,8 +11,6 @@
 4.Добавить src/ в gitignore
 '''
 
-# добавить src/ в gitignore
-
 import json
 from csv import DictReader
 
@@ -41,18 +39,15 @@ with open("./src/users.json", "r") as json_file:
         parse_data["gender"] = user["gender"]
         parse_data["address"] = user["address"]
         parse_data["age"] = user["age"]
-        parse_data["books"]=[]
-      #  parse_data["books"] = [next(book_fields)]
+        parse_data["books"] = []
         result.append(parse_data)
-i=1
+i = 0
 for book in book_fields:
     try:
         result[i]["books"].append(book)
         i = i + 1
     except IndexError:
         i = 0
-
-
 
 with open("./result.json", "w") as json_result:
     json.dump(result, json_result, indent=4)
